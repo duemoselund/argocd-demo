@@ -24,7 +24,7 @@ spec:
         tag: {{ .Values.image.tag}}
     spec:
       containers:
-      - image: {{ .Values.image.repository }}:{{ .Vaues.image.tag }}
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: nginx-alpine
         ports:
