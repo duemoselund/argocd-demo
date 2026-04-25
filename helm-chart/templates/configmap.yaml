@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
-  version: {{ .Values.configmap.data.version }}
+  version: {{ .Values.configmap.data }}
 kind: ConfigMap
 metadata:
-  name: nginx-version-{{ .Values.namespace.name }}
+  name: nginx-alpine
   namespace: {{ .Values.namespace.name }}

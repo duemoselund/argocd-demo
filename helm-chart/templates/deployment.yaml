@@ -3,15 +3,15 @@ kind: Deployment
 metadata:
   labels:
     app: nginx
-    tag: {{ .Values.image.tag }}
-  name: nginx-alpine-{{ .Values.namespace.name }}
+    tag: alpine
+  name: nginx-alpine
   namespace: {{ .Values.namespace.name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: nginx
-      tag: {{ .Values.image.tag }}
+      tag: alpine
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -21,11 +21,12 @@ spec:
     metadata:
       labels:
         app: nginx
-        tag: {{ .Values.image.tag}}
+        tag: alpine
     spec:
       containers:
       - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: nginx-alpine
-        ports:
-          - containerPort: {{ .Values.service.port}}
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+        
