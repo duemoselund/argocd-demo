@@ -27,5 +27,3 @@ spec:
       - image: nginx:alpine
         imagePullPolicy: IfNotPresent
         name: nginx-alpine
-        ports:
-          - containerPort: 8111
